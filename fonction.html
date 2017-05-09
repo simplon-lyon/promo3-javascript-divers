@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fonctions</title>
+</head>
+
+<body>
+
+    <p id="exemple">du texte
+        <span>du texte dans du span </span>
+    </p>
+
+    <script>
+        creerElement('span', 'balise');
+
+        function creerElement(balise, texte) {
+            let p = document.createElement(balise);
+            /*
+            Le textContent ciblera spécifiquement les noeuds
+            de texte de l'élément. On ne peut y mettre que du
+            texte qui sera considéré comme tel.
+            A la différence du innerHTML qui cible le contenu
+            html de l'élément, sous forme textuel.
+            On peut donc rajouter du html avec le innerHTML 
+            sous forme de texte (à éviter)
+            */
+            p.textContent = texte;
+            document.body.appendChild(p);
+        }
+    </script>
+</body>
+
+</html>
