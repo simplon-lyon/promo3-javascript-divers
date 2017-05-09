@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event</title>
+</head>
+
+<body>
+    <!--On peut ajouter un évènement directement dans le html
+    en lui fournissant la fonction à appeler (avec parenthèses)-->
+    <p onclick="test()">texte</p>
+
+    <script type="text/javascript">
+        let el = document.querySelector('p');
+        /*
+        On peut également ajouter un event avec addEventListener
+        (on peut en mettre plusieurs sur le même event en fait)
+        Si on veut faire appel à une fonction déjà définie, alors
+        il faudra donner le nom de la fonction sans les parenthèses,
+        sinon il appellera la fonction en question et assignera
+        à l'event le retour de la fonction en question.
+        */
+        el.addEventListener('click', test);
+        el.addEventListener('click', function() {
+            console.log('machin');
+        });
+        el.addEventListener('mouseenter', function() {
+            console.log('mousson');
+        });
+        /*
+        On peut enfin redéfinir le onclick de l'élément dans le js,
+        il remplacera le onclick actuel
+        */
+        el.onclick = test;
+
+        function test() {
+            console.log('bloup');
+        }
+    </script>
+</body>
+
+</html>
