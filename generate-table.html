@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Génération tableau</title>
+    <!--<script>
+    
+        donnees.forEach(function(valeur){
+            console.log(valeur);
+        });
+        for(let i in donnees) {
+            console.log(donnees[i]);
+        }
+        // /!\ ptêt pas supporté partout
+        for(let valeur of donnees) {
+            console.log(valeur);
+        }
+    </script>-->
+</head>
+
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>index</th>
+                <th>valeur</th>
+            </tr>
+        </thead>
+        <tbody id="destination"></tbody>
+    </table>
+
+    <script>
+        //on commence par créer un array qui contiendra nos
+        //données à manipuler
+        let donnees = ['ga', 'zo', 'bu', 'meu'];
+        //On fait une boucle sur ces données pour générer
+        //leur affichage
+        for (let x = 0; x < donnees.length; x++) {
+            //On crée un tr (nouvelle ligne du tableau)
+            let tr = document.createElement('tr');
+            //On crée deux td (les deux cellule de la nouvelle ligne)
+            let tdIndex = document.createElement('td');
+            let tdValeur = document.createElement('td');
+            //On assigne l'index à la première cellule
+            tdIndex.textContent = x;
+            //On assigne la valeur à la seconde cellule
+            tdValeur.textContent = donnees[x];
+            //On ajoute les deux cellule à la ligne
+            tr.appendChild(tdIndex);
+            tr.appendChild(tdValeur);
+            //On ajoute la ligne au tbody de notre table
+            document.getElementById('destination')
+                .appendChild(tr);
+
+        }
+    </script>
+</body>
+
+</html>
