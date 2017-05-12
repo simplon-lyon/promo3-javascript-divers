@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Les Objets</title>
+</head>
+
+<body>
+
+
+    <script>
+        /*
+                        Les objets en javascripts (et ailleurs) vont permettre
+                        d'organiser le code en regroupant des valeurs liées 
+                        entre elles dans un objet logique. (ici, notre objet
+                        représente une personne, donc avec son nom, son prénom
+                        toussa toussa).
+                        Pour déclarer un objet, on utilise les accolades et 
+                        à l'intérieur les associations clef:valeur des différentes
+                        propriétés de cet objet (les propriétés sont en gros les
+                        variables liées à un objet) séparées par des virgules.
+                        Une propriété peut être de n'importe quel type, aussi bien
+                        primitif que complexe. Elle peut contenir des number, string
+                        et autre ainsi que d'autres objets/tableaux/fonctions.
+                        Ici, la propriété adresse est un sous objet de personne,
+                        la propriété chiens est un tableau dans personne,
+                        la propriété salutation est une fonction de la personne 
+                        (aussi appelée méthode)
+                        */
+        let personne = {
+            nom: 'mon nom',
+            prenom: 'mon prénom',
+            age: 17,
+            adresse: {
+                numero: 5,
+                rue: 'rue machin',
+                ville: 'lyon',
+                codePostal: '69001',
+                region: 'Rhône Alpes',
+                pays: 'France'
+            },
+            celibataire: true,
+            chiens: [
+                'spot',
+                'rex',
+                'fido'
+            ],
+            salutation: function() {
+                alert('coucou tlm');
+            }
+        };
+
+        // let variable = 'region';
+        // console.log(personne[variable]);
+
+        /*
+        On peut accéder aux propriétés d'un objet en utilisant
+        le nom de l'objet puis un . et le nom de la propriété 
+        dont on veut récupérer la valeur
+        */
+        console.log(personne.region);
+        /*
+        On peut également utilisé la notation propres aux arrays,
+        mais en mettant le nom de la propriété en chaîne de caractères
+        au lieu d'un index numérique.
+        */
+        console.log(personne['region']);
+        /*
+        On peut modifier les valeurs d'une propriété en accédant
+        à celle ci et en indiquant la nouvelle valeur avec un =
+        */
+        personne.region = 'autre';
+        /*
+        La structure d'un objet en js n'est pas fixe, on peut 
+        rajouter une nouvelle propriété à la volée
+        */
+        personne.bloup = true;
+        console.log(personne.bloup);
+
+        /*
+        Pour accéder aux valeurs des sous objets, on met le nom
+        de l'objet suivis du nom de la propriété contenant le
+        sous objet, séparés par des points
+        */
+        personne.adresse.numero = 4;
+        console.log(personne.adresse.numero);
+        // console.log(personne['adresse']['numero']);
+
+        /*
+        Pareil pour les tableaux, on donne le nom de la propriété
+        contenant le tableau, puis on met l'index de la valeur
+        à laquelle on veut accéder, comme un tableau classique
+        */
+        console.log(personne.chiens[0]);
+        /*
+        Pour appeler une méthode d'un objet, on met le nom
+        de l'objet puis le nom
+        de la propriété contenant la fonction, avec des parenthèses
+        */
+        personne.salutation();
+    </script>
+</body>
+
+</html>
