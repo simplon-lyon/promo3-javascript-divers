@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>While</title>
+</head>
+
+<body>
+
+    <script>
+        // 1 == '1' == true == {} == []; // truthy
+        // 1 != 1 // falsy
+
+
+        // 1 == '1' //renvoie true
+        // 1 === '1' // renvoie false
+
+        //On commence par prendre une valeur utilisateur
+        let reponse = prompt('2+2 = ?');
+        //Tant que la valeur de réponse n'est pas la valeur
+        //attendue, on fait la boucle
+
+        // for(let reponse = prompt('bloup ?'); 
+        // reponse !== '4'; 
+        // reponse = prompt('bloup ?')){
+        while (reponse !== '4') {
+            /*
+            On affiche la réponse de l'utilisateur dans le 
+            html dans une balise p, qu'on ajoute au body.
+            */
+            let p = document.createElement('p');
+            p.textContent = 'Faux, ça n\'est pas ' + reponse;
+            document.body.appendChild(p);
+            //A chaque tour de boucle, on redemande une valeur
+            //à l'utilisateur
+            reponse = prompt('Non, 2+2 = ?');
+        }
+        let p = document.createElement('p');
+        p.textContent = 'bravo c\'est bien 4';
+        document.body.appendChild(p);
+    </script>
+</body>
+
+</html>
