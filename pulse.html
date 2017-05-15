@@ -22,26 +22,54 @@
         
         .pulseRed {
             animation-name: toRed;
-            animation-duration: 1s;
+            animation-duration: 0.2s;
             animation-iteration-count: 1;
         }
         
         .pulseGreen {
             animation-name: toGreen;
-            animation-duration: 0.1s;
+            animation-duration: 0.2s;
             animation-iteration-count: 1;
         }
     </style>
 </head>
 
 <body>
+    <input type="text" id="input">
     <button id="btn">click</button>
 
     <script>
+        //On capture le button
         let btn = document.querySelector('#btn');
+        //On sauvegarde l'état de sa balise class au début
+        //du script
+        let classes = btn.className;
+        /*
+        On ajoute un eventListener qui guette la fin des animations
+        css (animationend) et qui aura pour objectif de
+        remettre la balise class du button a son état initial
+        */
+        btn.addEventListener('animationend', function() {
+            btn.className = classes;
+        });
 
+
+        /*
+        Au click sur le button, on ajoute une des classes 
+        d'animation selon si l'input contient quelque chose ou
+        non en utilisant classList.add()
+        */
         btn.addEventListener('click', function() {
-            btn.classList.add('pulseRed');
+            let input = document.querySelector('#input');
+            if (input.value === '') {
+                btn.classList.add('pulseRed');
+                //btn.style.animation = 'toRed 0.1s';
+            } else {
+                btn.classList.add('pulseGreen');
+            }
+
+
+
         });
     </script>
 
