@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Objet properties</title>
+</head>
+
+<body>
+
+    <label for="clef">Clef :</label>
+    <input type="text" id="clef">
+    <label for="valeur">Valeur : </label>
+    <input type="text" id="valeur">
+
+    <button id="btn">Ajouter</button>
+
+    <script>
+        //on crée l'objet
+        let objet = {};
+
+        //si qu'on veut mvc
+        // function addToObjet(clef,valeur) {
+        //     objet[clef] = valeur;
+        // }
+
+        //on ajoute un event au click sur l'bouton
+        document.querySelector('#btn')
+            .addEventListener('click', function() {
+                let inputClef = document.querySelector('#clef');
+                let inputValeur = document.querySelector('#valeur');
+                //on ajoute/remplace une propriété en prenant les
+                //valeur de nos deux input comme clef/valeur
+
+                //Si qu'on veut mvc
+                // addToObjet(inputClef.value, inputValeur.value);
+
+                /*
+                On utilise la méthode hasOwnProperty('clef') (disponible
+                sur toutes les variables) pour déterminer si l'objet
+                possède déjà une propriété ayant la même clef que celle
+                contenue dans l'inputClef.
+                */
+                if (objet.hasOwnProperty(inputClef.value)) {
+                    //Si oui, on rajoute la nouvelle valeur à la suite
+                    // objet[inputClef.value] += ',' + inputValeur.value;
+                    let clef = inputClef.value;
+                    //Pour faire sous forme de tableau
+                    //On vérifie si la valeur liée à la propriété est un tableau
+                    // if(typeof(objet[clef]) === 'Array') {
+                    if (Array.isArray(objet[clef])) {
+                        //Si oui, on push directement la nouvelle valeur dedans
+                        objet[clef].push(inputValeur.value);
+                    } else {
+                        /*
+                        Si non, on transforme la valeur de cette propriété en tableau
+                        en lui mettant déjà à l'intérieur la valeur d'origine de
+                        la propriété ainsi que la nouvelle valeur contenue dans l'input
+                        */
+                        // let tableau = [];
+                        // tableau.push(objet[clef]);
+                        // tableau.push(inputValeur.value);
+                        // objet[clef] = tableau;
+                        objet[clef] = [objet[clef], inputValeur.value];
+
+                    }
+                } else {
+                    //Si non, on crée la propriété
+                    objet[inputClef.value] = inputValeur.value;
+                }
+                console.log(objet);
+            });
+    </script>
+</body>
+
+</html>
