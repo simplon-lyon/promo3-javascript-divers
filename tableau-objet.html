@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tableau d'objets</title>
+</head>
+
+<body>
+
+
+    <script>
+        /*
+                On crée une variable tables qui va contenir un tableau (array)
+                de table. Les tables seront des objets possédant une propriété
+                nbPlace (pour le nombre de place), numero (pour le numéro de
+                table) et apprenants (pour la liste des apprenants qui sont
+                à cette table).
+                La propriété apprenants sera elle même un tableau d'objets.
+                Les objets contenus dans apprenants auront une propriété
+                nom et une propriété prénom.
+                */
+        let tables = [{
+            nbPlace: 6,
+            numero: 1,
+            apprenants: [{
+                nom: 'nom1',
+                prenom: 'prenom1'
+            }, {
+                nom: 'nom2',
+                prenom: 'prenom2'
+            }, {
+                nom: 'nom3',
+                prenom: 'prenom3'
+            }]
+        }, {
+            nbPlace: 7,
+            numero: 2,
+            apprenants: [{
+                nom: 'nom4',
+                prenom: 'prenom4'
+            }, {
+                nom: 'nom5',
+                prenom: 'prenom5'
+            }, {
+                nom: 'nom6',
+                prenom: 'prenom6'
+            }]
+        }, {
+            nbPlace: 4,
+            numero: 3,
+            apprenants: [{
+                nom: 'nom7',
+                prenom: 'prenom7'
+            }, {
+                nom: 'nom8',
+                prenom: 'prenom8'
+            }, {
+                nom: 'nom9',
+                prenom: 'prenom9'
+            }]
+        }];
+        /*
+        On fait une première boucle pour itérer sur les objets
+        table contenus dans l'array tables
+        */
+        for (let table of tables) {
+            //Pour chaque table, on affiche son numéro et son nombre
+            //de place
+            console.log('La table n°' + table.numero + ' comporte ' +
+                table.nbPlace + ' places, les apprenants' +
+                ' s\'y appellent :');
+            /*
+            On fait ensuite une nouvelle boucle à l'intérieur de
+            la précédente pour itérer sur tous les objets 
+            apprenants de la propriété apprenants de
+            la table actuelle
+            */
+            for (let apprenant of table.apprenants) {
+                //On affiche le nom de chaque apprenant
+                console.log(apprenant.nom);
+            }
+        }
+    </script>
+</body>
+
+</html>
