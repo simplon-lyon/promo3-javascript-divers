@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Introduction au this</title>
+</head>
+
+<body>
+
+    <button>red</button>
+    <button>green</button>
+    <button>blue</button>
+
+    <script>
+        /*
+                                                                                                        On a deux objets différents qui possèdent tout deux
+                                                                                                        une méthode présentation faisant appel à la même
+                                                                                                        function pres
+                                                                                                        */
+        let chien = {
+            nom: 'fido',
+            race: 'caniche',
+            aboyer: function() {
+                alert('bork');
+            },
+            presentation: pres
+        };
+
+        let personne = {
+            nom: 'bloup',
+            prenom: 'henri',
+            presentation: pres
+        };
+        /*
+        La fonction pres a pour but d'itérer sur les propriétés
+        de l'objet sur lequel elle est assignée.
+        Afin de la rendre générique, on utilise le mot clef
+        this qui contiendra une référence à l'objet qui lance
+        la fonction.
+        */
+        function pres() {
+            for (let prop in this) {
+                console.log(prop + ':' + this[prop]);
+            }
+        }
+
+
+        /*
+        On sélectionne tous les button du html puis on itère
+        dessus avec un forEach
+        */
+        document.querySelectorAll('button')
+            .forEach(function(element) {
+                console.log(element);
+                //On ajoute la function changeColor comme
+                //event listener du click de chaque bouton
+                element.addEventListener('click', changeColor);
+            });
+
+        /*
+        La fonction changeColor change le background-color du
+        this (donc de l'élément sur lequel on vient de cliquer)
+        en utilisant comme valeur le texte du bouton en question
+        */
+        function changeColor() {
+            /*
+            Ici, le this viendra du addEventListener
+            */
+            this.style.backgroundColor = this.textContent;
+        }
+    </script>
+</body>
+
+</html>
